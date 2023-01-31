@@ -1,9 +1,9 @@
 interface PlanetNameProps {
     planetName: string,
-    setPlanetName: (name: string) => void
+    onChangePlanetName: (event : React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const PlanetName: React.FC<PlanetNameProps> = ({ planetName, setPlanetName }) => {
+const PlanetName: React.FC<PlanetNameProps> = ({ planetName, onChangePlanetName }) => {
     return (
         <>
             <label htmlFor="planetName">Planet Name: </label>
@@ -11,7 +11,7 @@ const PlanetName: React.FC<PlanetNameProps> = ({ planetName, setPlanetName }) =>
                 id="planetName" 
                 type="text" 
                 value={planetName} 
-                onChange={(event) => { setPlanetName(event.target.value) }}
+                onChange={onChangePlanetName}
             />
         </>
 

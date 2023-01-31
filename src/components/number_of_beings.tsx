@@ -1,9 +1,11 @@
+import React from "react";
+
 interface NumberOfBeingsProps {
     numberOfBeings: string,
-    setNumberOfBeings: (name: string) => void
+    onChangeNumberOfBeings: (event : React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const NumberOfBeings: React.FC<NumberOfBeingsProps> = ({ numberOfBeings, setNumberOfBeings }) => {
+const NumberOfBeings: React.FC<NumberOfBeingsProps> = ({ numberOfBeings, onChangeNumberOfBeings }) => {
     return (
         <>
             <label htmlFor="NumberOfBeings">Number of beings: </label>
@@ -11,7 +13,7 @@ const NumberOfBeings: React.FC<NumberOfBeingsProps> = ({ numberOfBeings, setNumb
                 id="NumberOfBeings" 
                 type="number" 
                 value={numberOfBeings} 
-                onChange={(event) => { setNumberOfBeings(event.target.value) }}
+                onChange={onChangeNumberOfBeings}
             />
         </>
 

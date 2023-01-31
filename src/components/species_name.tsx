@@ -1,9 +1,9 @@
 interface SpeciesNameProps {
     speciesName: string,
-    setSpeciesName: (name: string) => void
+    onChangeSpeciesName: (event : React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const SpeciesName: React.FC<SpeciesNameProps> = ({ speciesName, setSpeciesName }) => {
+const SpeciesName: React.FC<SpeciesNameProps> = ({ speciesName, onChangeSpeciesName }) => {
     return (
         <>
             <label htmlFor="speciesName">Species Name: </label>
@@ -11,7 +11,7 @@ const SpeciesName: React.FC<SpeciesNameProps> = ({ speciesName, setSpeciesName }
                 id="speciesName"
                 type="text"
                 value={speciesName}
-                onChange={(event) => { setSpeciesName(event.target.value) }}
+                onChange={onChangeSpeciesName}
             />
         </>
     )

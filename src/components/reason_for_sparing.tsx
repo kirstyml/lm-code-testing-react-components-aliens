@@ -1,16 +1,16 @@
 interface ReasonForSparingProps {
     reasonForSparing: string,
-    setReasonForSparing: (name: string) => void
+    onChangeReasonForSparing: (event : React.ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-const ReasonForSparing: React.FC<ReasonForSparingProps> = ({ reasonForSparing, setReasonForSparing }) => {
+const ReasonForSparing: React.FC<ReasonForSparingProps> = ({ reasonForSparing, onChangeReasonForSparing }) => {
     return (
         <>
             <label htmlFor="ReasonForSparing">Reason for sparing: </label>
             <textarea
                 id="ReasonForSparing" 
                 value={reasonForSparing} 
-                onChange={(event) => { setReasonForSparing(event.target.value) }}
+                onChange={onChangeReasonForSparing}
             />
         </>
 

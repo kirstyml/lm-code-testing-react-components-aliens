@@ -23,11 +23,11 @@ const FormInputs : React.FC = () => {
 
     return (
         <form onSubmit={(event) => handleSubmit(event)}>
-            <SpeciesName speciesName={speciesName} setSpeciesName={setSpeciesName}  />
-            <PlanetName planetName={planetName} setPlanetName={setPlanetName} />
-            <NumberOfBeings numberOfBeings={numberOfBeings} setNumberOfBeings={setNumberOfBeings} />
-            <SumAnswer sumAnswer={sumAnswer} setSumAnswer={setSumAnswer} />
-            <ReasonForSparing reasonForSparing={reasonForSparing} setReasonForSparing={setReasonForSparing} />
+            <SpeciesName speciesName={speciesName} onChangeSpeciesName={(event) => setSpeciesName(event.target.value)}  />
+            <PlanetName planetName={planetName} onChangePlanetName={(event) => setPlanetName(event.target.value)} />
+            <NumberOfBeings numberOfBeings={numberOfBeings} onChangeNumberOfBeings={(event) => setNumberOfBeings(event.target.value)} />
+            <SumAnswer sumAnswer={sumAnswer} onChangeSumAnswer={(event) => setSumAnswer(event.target.value)} />
+            <ReasonForSparing reasonForSparing={reasonForSparing} onChangeReasonForSparing={(event) => setReasonForSparing(event.target.value)} />
             <input type="submit" value="Submit Form" />
         </form>
     )

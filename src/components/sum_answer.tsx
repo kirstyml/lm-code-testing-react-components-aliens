@@ -1,16 +1,16 @@
 interface SumAnswerProps {
     sumAnswer: string,
-    setSumAnswer: (name: string) => void
+    onChangeSumAnswer: (event : React.ChangeEvent<HTMLSelectElement>) => void
 }
 
-const SumAnswer: React.FC<SumAnswerProps> = ({ sumAnswer, setSumAnswer }) => {
+const SumAnswer: React.FC<SumAnswerProps> = ({ sumAnswer, onChangeSumAnswer }) => {
     return (
         <>
             <label htmlFor="sumAnswer">What is 2 + 2? </label>
             <select 
                 id="sumAnswer" 
                 value={sumAnswer} 
-                onChange={(event) => { setSumAnswer(event.target.value) }}
+                onChange={onChangeSumAnswer}
             >
                 <option value="4">4</option>
                 <option value="Not 4">Not 4</option>
