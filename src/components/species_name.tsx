@@ -5,7 +5,10 @@ interface SpeciesNameProps {
 
 const SpeciesName : React.FC<SpeciesNameProps> = ({ speciesName, setSpeciesName }) => {
     return (
-        <input type="text" value={speciesName} onChange={(event) => {setSpeciesName(event.target.value)}} />
+        <>
+            <label htmlFor="speciesName">Species Name: </label>
+            <input id="speciesName" type="text" value={speciesName} onChange={(event) => {setSpeciesName(event.target.value)}} />
+        </>
     )
 }
 
