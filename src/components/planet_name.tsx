@@ -1,4 +1,4 @@
-interface PlanetNameProps {
+export interface PlanetNameProps {
     planetName: string,
     onChangePlanetName: (event : React.ChangeEvent<HTMLInputElement>) => void
 }
