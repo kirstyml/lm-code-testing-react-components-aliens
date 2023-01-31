@@ -4,6 +4,7 @@ import PlanetName from "./planet_name";
 import NumberOfBeings from "./number_of_beings";
 import SumAnswer from "./sum_answer";
 import ReasonForSparing from "./reason_for_sparing";
+import SubmitButton from "./submit_button";
 
 const FormInputs : React.FC = () => {
     const [speciesName, setSpeciesName] = useState('');
@@ -28,7 +29,7 @@ const FormInputs : React.FC = () => {
             <NumberOfBeings numberOfBeings={numberOfBeings} onChangeNumberOfBeings={(event) => setNumberOfBeings(event.target.value)} />
             <SumAnswer sumAnswer={sumAnswer} onChangeSumAnswer={(event) => setSumAnswer(event.target.value)} />
             <ReasonForSparing reasonForSparing={reasonForSparing} onChangeReasonForSparing={(event) => setReasonForSparing(event.target.value)} />
-            <input type="submit" value="Submit Form" />
+            <SubmitButton />
         </form>
     )
 }
