@@ -1,7 +1,7 @@
 import NumberOfBeings from "./number_of_beings";
 import SpeciesName from "./species_name";
 
-interface SubmittedInfoProps {
+export interface SubmittedInfoProps {
     speciesName: string,
     planetName: string,
     numberOfBeings: string,
