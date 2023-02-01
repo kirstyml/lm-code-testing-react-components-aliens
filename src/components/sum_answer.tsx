@@ -1,4 +1,4 @@
-interface SumAnswerProps {
+export interface SumAnswerProps {
     sumAnswer: string,
     onChangeSumAnswer: (event : React.ChangeEvent<HTMLSelectElement>) => void
 }
