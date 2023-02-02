@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import NumberOfBeings, { NumberOfBeingsProps } from './number_of_beings';
 
@@ -31,5 +31,51 @@ describe("NumberOfBeings", () => {
         await userEvent.type(input, '9');
         expect(mockInputChange).toHaveBeenCalledTimes(1);
         expect(mockInputChange).toHaveReturnedWith('9');
+    });
+    it(`Given the input has rendered, 
+    when a valid NumberOfBeings is entered, 
+    then there is no error message present`, async () => {
+        const mockInputChange = jest.fn(e => e.target.value);
+        const numberOfBeingsProps: NumberOfBeingsProps = {
+            numberOfBeings: '',
+            onChangeNumberOfBeings: mockInputChange
+        }
+        render(<NumberOfBeings {...numberOfBeingsProps} />);
+        const input = screen.getByRole('spinbutton');
+        expect(input).toBeInTheDocument();
+        fireEvent.change(input, { target: { value: '1000000000' } });
+        expect(
+            screen.queryByText('Number of beings must be', { exact: false })
+        ).not.toBeInTheDocument();
+    });
+    it(`Given the input has rendered, 
+    when a NumberOfBeings that is not a number is entered, 
+    then the input does not register it`, async () => {
+        const mockInputChange = jest.fn(e => e.target.value);
+        const numberOfBeingsProps: NumberOfBeingsProps = {
+            numberOfBeings: '',
+            onChangeNumberOfBeings: mockInputChange
+        }
+        render(<NumberOfBeings {...numberOfBeingsProps} />);
+        const input = screen.getByRole('spinbutton');
+        expect(input).toBeInTheDocument();
+        await userEvent.type(input, 'H');
+        expect(mockInputChange).toHaveBeenCalledTimes(0);
+    });
+    it(`Given the input has rendered, 
+    when a NumberOfBeings that is too low is entered 
+    then there is an error message present`, async () => {
+        const mockInputChange = jest.fn(e => e.target.value);
+        const NumberOfBeingsProps: NumberOfBeingsProps = {
+            numberOfBeings: '',
+            onChangeNumberOfBeings: mockInputChange
+        }
+        render(<NumberOfBeings {...NumberOfBeingsProps} />);
+        const input = screen.getByRole('spinbutton');
+        expect(input).toBeInTheDocument();
+        fireEvent.change(input, { target: { value: '999999999' } });
+        expect(
+            screen.getByText('Number of beings must be', { exact: false })
+        ).toBeInTheDocument();
     });
 })
