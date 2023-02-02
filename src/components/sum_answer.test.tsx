@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import SumAnswer, { SumAnswerProps } from './sum_answer';
 
@@ -43,5 +43,37 @@ describe("SumAnswer", () => {
         // This assertion doesn't work - is it because the value of the select isn't updated
         // as the setSumAnswer function is now a mock function.
         // expect(select as HTMLSelectElement).toHaveValue("Not 4");
+    });
+    it(`Given the input has rendered, 
+    when a valid SumAnswer is entered, 
+    then there is no error message present`, async () => {
+        const mockInputChange = jest.fn(e => e.target.value);
+        const SumAnswerProps: SumAnswerProps = {
+            sumAnswer: '',
+            onChangeSumAnswer: mockInputChange
+        }
+        render(<SumAnswer {...SumAnswerProps} />);
+        const input = screen.getByRole('combobox');
+        expect(input).toBeInTheDocument();
+        fireEvent.change(input, { target: { value: '4' } });
+        expect(
+            screen.queryByText('Incorrect answer.', { exact: false })
+        ).not.toBeInTheDocument();
+    });
+    it(`Given the input has rendered, 
+    when a SumAnswer that is incorrect entered 
+    then there is an error message present`, async () => {
+        const mockInputChange = jest.fn(e => e.target.value);
+        const SumAnswerProps: SumAnswerProps = {
+            sumAnswer: '',
+            onChangeSumAnswer: mockInputChange
+        }
+        render(<SumAnswer {...SumAnswerProps} />);
+        const input = screen.getByRole('combobox');
+        expect(input).toBeInTheDocument();
+        fireEvent.change(input, { target: { value: 'Not 4' } });
+        expect(
+            screen.getByText('Incorrect answer.', { exact: false })
+        ).toBeInTheDocument();
     });
 })
