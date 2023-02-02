@@ -19,7 +19,13 @@ form {
 }
 
 input, select, textarea {
-	margin-bottom: 1rem; 
+	margin-top: 1rem; 
+}
+
+.errorMessage {
+	color: red;
+	font-size: 0.75rem;
+	margin: 0;
 }
 
 
