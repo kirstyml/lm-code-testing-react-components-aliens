@@ -23,6 +23,7 @@ const PlanetName: React.FC<PlanetNameProps> = ({ planetName, onChangePlanetName 
             <label htmlFor="planetName">Planet Name: </label>
             <input 
                 id="planetName" 
+                name="planetName"
                 type="text" 
                 value={planetName} 
                 onChange={(e) => {

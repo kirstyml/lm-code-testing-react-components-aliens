@@ -20,6 +20,7 @@ const SumAnswer: React.FC<SumAnswerProps> = ({ sumAnswer, onChangeSumAnswer }) =
             <label htmlFor="sumAnswer">What is 2 + 2? </label>
             <select 
                 id="sumAnswer" 
+                name="sumAnswer" 
                 value={sumAnswer} 
                 onChange={(e) => {
                     const errorMessage = validate(e.target.value);

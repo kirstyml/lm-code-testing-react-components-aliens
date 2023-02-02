@@ -17,9 +17,10 @@ const ReasonForSparing: React.FC<ReasonForSparingProps> = ({ reasonForSparing, o
 
     return (
         <>
-            <label htmlFor="ReasonForSparing">Reason for sparing: </label>
+            <label htmlFor="reasonForSparing">Reason for sparing: </label>
             <textarea
-                id="ReasonForSparing" 
+                id="reasonForSparing" 
+                name="reasonForSparing"
                 value={reasonForSparing} 
                 onChange={(e) => {
                     const errorMessage = validate(e.target.value);

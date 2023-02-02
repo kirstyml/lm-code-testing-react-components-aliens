@@ -20,9 +20,10 @@ const NumberOfBeings: React.FC<NumberOfBeingsProps> = ({ numberOfBeings, onChang
 
     return (
         <>
-            <label htmlFor="NumberOfBeings">Number of beings: </label>
+            <label htmlFor="numberOfBeings">Number of beings: </label>
             <input 
-                id="NumberOfBeings" 
+                id="numberOfBeings"
+                name="numberOfBeings" 
                 type="number" 
                 value={numberOfBeings} 
                 onChange={(e) => {

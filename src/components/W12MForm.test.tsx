@@ -1,5 +1,6 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import W12MForm from './W12MForm';
+import userEvent from '@testing-library/user-event';
 
 test('renders form element', () => {
 	// we can hold onto the object returned from render()
@@ -9,4 +10,17 @@ test('renders form element', () => {
 	// the container is just a normal DOM element, so we can look at normal properties like '.firstChild'
 	// for example, the firstChild of our container should be our form element
 	expect(container.firstChild).toHaveClass('w12MForm');
+});
+
+test(`Given the form has been filled out,
+	When the submit button is pressed
+	Then the onSubmit is fired`, async () => {
+	render(<W12MForm />);
+	const submitButton = screen.getByRole('button');
+	expect(submitButton).toBeInTheDocument();
+	const labelText = screen.queryByText("Species:");
+	expect(labelText).not.toBeInTheDocument();
+	await userEvent.click(submitButton);
+	const firstlabelText = screen.getByText("Species:");
+	expect(firstlabelText).toBeInTheDocument();
 });

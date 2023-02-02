@@ -22,6 +22,7 @@ const SpeciesName: React.FC<SpeciesNameProps> = ({ speciesName, onChangeSpeciesN
             <label htmlFor="speciesName">Species Name: </label>
             <input
                 id="speciesName"
+                name="speciesName"
                 type="text"
                 value={speciesName}
                 onChange={(e) => {

@@ -15,20 +15,34 @@ const W12MForm = () => {
 	const [sumAnswer, setSumAnswer] = useState('Not 4');
 	const [reasonForSparing, setReasonForSparing] = useState('');
 	const [submitted, setSubmitted] = useState(false);
+	const [submittedInfo, setSubmittedInfo] = useState({
+		speciesName:'',
+		planetName:'',
+		numberOfBeings:'',
+		sumAnswer:'',
+		reasonForSparing: ''
+	});
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-		console.log(`speciesName: ${speciesName}`);
-		console.log(`planetName: ${planetName}`);
-		console.log(`numberOfBeings: ${numberOfBeings}`);
-		console.log(`sumAnswer: ${sumAnswer}`);
-		console.log(`reasonForSparing: ${reasonForSparing}`);
-		setSubmitted(true);
 		event.preventDefault();
+		const form = event.target as HTMLFormElement;
+		const formData = new FormData(form);
+		const formJson = Object.fromEntries(formData.entries());
+		console.log(formJson);
+		const newSubmittedInfo = {
+			speciesName: formJson.speciesName as string,
+			planetName: formJson.planetName as string,
+			numberOfBeings: formJson.numberOfBeings as string,
+			sumAnswer:formJson.sumAnswer as string,
+			reasonForSparing: formJson.reasonForSparing as string
+		}
+		setSubmittedInfo(newSubmittedInfo);
+		setSubmitted(true);
 	};
 	return (
 		<section className='w12MForm'>
 			<W12MHeader />
-			<form onSubmit={(event) => handleSubmit(event)}>
+			<form method="post" onSubmit={handleSubmit}>
 				<SpeciesName
 					speciesName={speciesName}
 					onChangeSpeciesName={(event) => setSpeciesName(event.target.value)} />
@@ -47,11 +61,11 @@ const W12MForm = () => {
 				<SubmitButton />
 			</form>
 			<SubmittedInfo
-				speciesName={speciesName}
-				planetName={planetName}
-				numberOfBeings={numberOfBeings}
-				sumAnswer={sumAnswer}
-				reasonForSparing={reasonForSparing}
+				speciesName={submittedInfo.speciesName}
+				planetName={submittedInfo.planetName}
+				numberOfBeings={submittedInfo.numberOfBeings}
+				sumAnswer={submittedInfo.sumAnswer}
+				reasonForSparing={submittedInfo.reasonForSparing}
 				submitted={submitted}
 			/>
 		</section>
