@@ -40,7 +40,8 @@ describe("SumAnswer", () => {
         await userEvent.selectOptions(select, ["Not 4"]);
         expect(mockInputChange).toHaveBeenCalledTimes(1);
         expect(mockInputChange).toHaveLastReturnedWith("Not 4");
-        // This assertion doesn't work and I can't understand why?
-        // expect((option as HTMLOptionElement).selected).toBe(true);
+        // This assertion doesn't work - is it because the value of the select isn't updated
+        // as the setSumAnswer function is now a mock function.
+        // expect(select as HTMLSelectElement).toHaveValue("Not 4");
     });
 })
