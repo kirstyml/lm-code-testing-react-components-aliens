@@ -10,7 +10,7 @@ describe("SpeciesName", () => {
         const labelText = screen.getByText("Species Name:");
         expect(labelText).toBeInTheDocument();
     });
-    it(`Given the value of number of beings,
+    it(`Given the value of species name,
         When the component renders, 
         it should displays the input value`, () => {
         render(<SpeciesName speciesName='Earth' onChangeSpeciesName={() => { }} />);
