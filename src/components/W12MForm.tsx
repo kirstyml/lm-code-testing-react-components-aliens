@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import W12MHeader from './W12MHeader';
-import SpeciesName from "./species_name";
-import PlanetName from "./planet_name";
 import NumberOfBeings from "./number_of_beings";
 import SumAnswer from "./sum_answer";
 import ReasonForSparing from "./reason_for_sparing";
 import SubmitButton from "./submit_button";
 import SubmittedInfo from './submitted_info';
+import TextInput from './text_input';
 
 const W12MForm = () => {
 	const [speciesName, setSpeciesName] = useState('');
@@ -16,10 +15,10 @@ const W12MForm = () => {
 	const [reasonForSparing, setReasonForSparing] = useState('');
 	const [submitted, setSubmitted] = useState(false);
 	const [submittedInfo, setSubmittedInfo] = useState({
-		speciesName:'',
-		planetName:'',
-		numberOfBeings:'',
-		sumAnswer:'',
+		speciesName: '',
+		planetName: '',
+		numberOfBeings: '',
+		sumAnswer: '',
 		reasonForSparing: ''
 	});
 
@@ -33,7 +32,7 @@ const W12MForm = () => {
 			speciesName: formJson.speciesName as string,
 			planetName: formJson.planetName as string,
 			numberOfBeings: formJson.numberOfBeings as string,
-			sumAnswer:formJson.sumAnswer as string,
+			sumAnswer: formJson.sumAnswer as string,
 			reasonForSparing: formJson.reasonForSparing as string
 		}
 		setSubmittedInfo(newSubmittedInfo);
@@ -43,12 +42,20 @@ const W12MForm = () => {
 		<section className='w12MForm'>
 			<W12MHeader />
 			<form method="post" onSubmit={handleSubmit}>
-				<SpeciesName
-					speciesName={speciesName}
-					onChangeSpeciesName={(event) => setSpeciesName(event.target.value)} />
-				<PlanetName
-					planetName={planetName}
-					onChangePlanetName={(event) => setPlanetName(event.target.value)} />
+				<TextInput
+					name='speciesName'
+					label="Species name:"
+					value={speciesName}
+					onChangeTextInput={(event) => setSpeciesName(event.target.value)}
+					validationFunctionName='speciesName'
+				/>
+				<TextInput
+					name='planetName'
+					label="Planet name:"
+					value={planetName}
+					onChangeTextInput={(event) => setPlanetName(event.target.value)}
+					validationFunctionName='planetName'
+				/>
 				<NumberOfBeings
 					numberOfBeings={numberOfBeings}
 					onChangeNumberOfBeings={(event) => setNumberOfBeings(event.target.value)} />
