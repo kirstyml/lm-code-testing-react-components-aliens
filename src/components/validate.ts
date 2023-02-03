@@ -1,10 +1,12 @@
+export type ValidationFunctionName = 'speciesName' | 'planetName'
+
 interface ValidateProps {
     value: string,
-    type: string
+    validationFunctionName: ValidationFunctionName
 }
 
-export const validate : (props: ValidateProps) => string | undefined = ({ value, type }) => {
-    switch (type) {
+export const validate : (props: ValidateProps) => string | undefined = ({ value, validationFunctionName }) => {
+    switch (validationFunctionName) {
         case 'speciesName':
             if(value.length < 3 || value.length > 23) {
                 return "Species name must be between 3 and 23 characters";
