@@ -50,7 +50,7 @@ describe("SpeciesName", () => {
     });
     it(`Given the input has rendered, 
         when a species name that is too short is entered, 
-        then there is no error message present`, async () => {
+        then there is an error message present`, async () => {
         const mockInputChange = jest.fn(e => e.target.value);
         const SpeciesNameProps: SpeciesNameProps = {
             speciesName: '',
@@ -66,7 +66,7 @@ describe("SpeciesName", () => {
     });
     it(`Given the input has rendered, 
         when a species name that is too long is entered, 
-        then there is no error message present`, async () => {
+        then there is an error message present`, async () => {
         const mockInputChange = jest.fn(e => e.target.value);
         const SpeciesNameProps: SpeciesNameProps = {
             speciesName: '',
@@ -82,7 +82,7 @@ describe("SpeciesName", () => {
     });
     it(`Given the input has rendered, 
         when an invalid species name containing a number is entered, 
-        then there is no error message present`, async () => {
+        then there is an error message present`, async () => {
         const mockInputChange = jest.fn(e => e.target.value);
         const SpeciesNameProps: SpeciesNameProps = {
             speciesName: '',
@@ -98,7 +98,7 @@ describe("SpeciesName", () => {
     });
     it(`Given the input has rendered, 
         when an invalid species name containing a special character is entered, 
-        then there is no error message present`, async () => {
+        then there is an error message present`, async () => {
         const mockInputChange = jest.fn(e => e.target.value);
         const SpeciesNameProps: SpeciesNameProps = {
             speciesName: '',

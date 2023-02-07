@@ -10,9 +10,9 @@ describe("ReasonForSparing", () => {
         const labelText = screen.getByText("Reason for sparing:");
         expect(labelText).toBeInTheDocument();
     });
-    it(`Given the value of number of beings,
+    it(`Given the value of reason for sparing,
         When the component renders, 
-        it should displays the input value`, () => {
+        it should display the input value`, () => {
         render(<ReasonForSparing reasonForSparing='Earth' onChangeReasonForSparing={() => { }} />);
         const inputValue = screen.getByDisplayValue('Earth');
         expect(inputValue).toBeInTheDocument();

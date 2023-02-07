@@ -61,7 +61,7 @@ describe("SumAnswer", () => {
         ).not.toBeInTheDocument();
     });
     it(`Given the input has rendered, 
-    when a SumAnswer that is incorrect entered 
+    when a SumAnswer that is incorrect is entered 
     then there is an error message present`, async () => {
         const mockInputChange = jest.fn(e => e.target.value);
         const SumAnswerProps: SumAnswerProps = {

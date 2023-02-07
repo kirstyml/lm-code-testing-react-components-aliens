@@ -10,7 +10,7 @@ describe("PlanetName", () => {
         const labelText = screen.getByText("Planet Name:");
         expect(labelText).toBeInTheDocument();
     });
-    it(`Given the value of number of beings,
+    it(`Given the value of planet name,
         When the component renders, 
         it should displays the input value`, () => {
         render(<PlanetName planetName='Earth' onChangePlanetName={() => { }} />);
@@ -66,7 +66,7 @@ describe("PlanetName", () => {
     });
     it(`Given the input has rendered, 
     when a Planet name that is too long is entered, 
-    then there is no error message present`, async () => {
+    then there is an error message present`, async () => {
         const mockInputChange = jest.fn(e => e.target.value);
         const PlanetNameProps: PlanetNameProps = {
             planetName: '',
@@ -98,7 +98,7 @@ describe("PlanetName", () => {
     });
     it(`Given the input has rendered, 
     when an invalid Planet name containing a special character is entered, 
-    then there is no error message present`, async () => {
+    then there is an error message present`, async () => {
         const mockInputChange = jest.fn(e => e.target.value);
         const PlanetNameProps: PlanetNameProps = {
             planetName: '',
